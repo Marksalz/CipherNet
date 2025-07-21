@@ -1,12 +1,14 @@
 import 'dotenv/config';
 import express from 'express';
+import router from './routes/users.js';
+import { connectToDB } from './lib/dbConnection.js';
 
 const PORT = process.env.PORT;
 
 const server = express();
 
 server.use(express.json());
-server.use('/users', userRoutes);
+server.use(router);
 
 await connectToDB();
 
